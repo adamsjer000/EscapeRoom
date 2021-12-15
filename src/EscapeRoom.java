@@ -4,12 +4,16 @@ import java.awt.event.ActionListener;
 
 
 public class EscapeRoom {
+    static double usersAnswer, correctAnswer;
+    static String displayProblem = "";
 
     JPanel panel;
-    JButton ranchOnPizza, ranchNotOnPizza, checkAnswer;
+    JButton checkAnswer;
     JLabel showProblem;
     JTextField answerInput;
-    
+    JRadioButton ranchOnPizza, ranchNotOnPizza;
+    ButtonGroup radios = new ButtonGroup();
+
 
     public static void main(String[] args){
 
@@ -24,14 +28,35 @@ public class EscapeRoom {
 
         panel = new JPanel();
 
-        ranchOnPizza = new JButton("RanchOnPizza");
-        ranchNotOnPizza = new JButton("RanchNotOnPizza");
+        ranchOnPizza = new JRadioButton("RanchOnPizza");
+        ranchNotOnPizza = new JRadioButton("RanchNotOnPizza");
         showProblem = new JLabel("Place Holder");
         answerInput = new JTextField(10);
         checkAnswer = new JButton("Check Answer");
 
+        ranchOnPizza.setBounds(100,25,200,25);
+        ranchNotOnPizza.setBounds(100,50,200,25);
+
+        radios.add(ranchNotOnPizza);
+        radios.add(ranchOnPizza);
+
+        panel.setLayout(null);
+        panel.add(ranchNotOnPizza);
+        panel.add(ranchOnPizza);
+
         frame.add(panel);
         frame.setVisible(true);
 
+    }
+    public static void checkAnswer(){
+        if(usersAnswer == correctAnswer){
+            JOptionPane.showMessageDialog(null, "You are correct");
+        }else{
+            JOptionPane.showMessageDialog(null,"YES RANCH BELONGS ON PIZZA !!!");
+        }
+    }
+    public static void getUserAnswer(){
+
+      
     }
 }
